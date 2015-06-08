@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
                 uniqueness: { case_sensitive: false })
     validates(:remember_token,presence:true)
     validates(:admin,presence:true)
+    has_secure_password
 end
