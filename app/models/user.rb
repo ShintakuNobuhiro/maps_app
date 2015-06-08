@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
     validates(:remember_token,presence:true)
     validates(:admin,presence:true)
     has_secure_password
+    validates(:password, length: { minimum: 6} )
 end
