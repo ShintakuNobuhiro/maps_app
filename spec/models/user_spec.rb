@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
     before { @user = User.new(name: "Test User", email: "test@gmail.com",
-            password:"foobar", password_confirmation:"foobar", remember_token:"test2",admin:"true") }
+            password:"foobar", password_confirmation:"foobar") }
 
     subject { @user }
 
@@ -12,7 +12,6 @@ describe User do
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
     it { should respond_to(:remember_token) }
-    it { should respond_to(:admin) }
     it { should respond_to(:authenticate) }
     
     it { should be_valid }
@@ -26,20 +25,10 @@ describe User do
         before { @user.email = " " }
         it { should_not be_valid }
     end
-        
-    describe "when remember_token is not present" do
-        before { @user.remember_token = " " }
-        it { should_not be_valid }
-    end
-        
-    describe "when admin is not present" do
-        before { @user.admin = " " }
-        it { should_not be_valid }
-    end
     
     describe "when password is not present" do
         before { @user = User.new(name: "Test User", email: "test@gmail.com",
-            password:"", password_confirmation:"", remember_token:"test2",admin:"true") }
+            password:"", password_confirmation:"") }
         it { should_not be_valid }
     end
     
