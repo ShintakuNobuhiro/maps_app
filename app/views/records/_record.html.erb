@@ -1,0 +1,10 @@
+<li>
+  <span class="content"><%= record.content %></span>
+  <span class="lat"><%= record.lat %></span>
+  <span class="lng"><%= record.lng %></span>
+  <span class="weather"><%= record.weather %></span>
+  <span class="date"><%= record.date %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(record.created_at) %> ago.
+  </span>
+</li>

@@ -7,7 +7,7 @@ describe "User pages" do
   describe "index" do
     
     let(:user) { FactoryGirl.create(:user) }
-    
+
     before do
       sign_in user
       visit users_path
@@ -59,10 +59,19 @@ describe "User pages" do
   
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:record, user: user, content: "Lorem ipsum1", user_id: user.id, lat:40.1, lng:120.5, weather:"雨", date: "7/1") }
+    let!(:m2) { FactoryGirl.create(:record, user: user, content: "Lorem ipsum2", user_id: user.id, lat:40.1, lng:120.5, weather:"雨", date: "7/1") }
+
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+    
+    describe "microposts" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.record.count) }
+    end
   end
   
   describe "signup" do

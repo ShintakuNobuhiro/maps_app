@@ -93,7 +93,19 @@ describe "Authentication" do
         before { patch user_path(wrong_user) }
         specify { expect(response).to redirect_to(root_path) }
       end
-      
+    end
+    
+    describe "in the Records controller" do
+        
+      describe "submitting to the create action" do
+        before { post records_path }
+        specify { expect(response).to redirect_to(signin_path) }
+      end
+        
+      describe "submitting to the destroy action" do
+        before { delete record_path(FactoryGirl.create(:record)) }
+        specify { expect(response).to redirect_to(signin_path) }
+      end
     end
   end
 end

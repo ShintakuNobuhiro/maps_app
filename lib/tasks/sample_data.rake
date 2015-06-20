@@ -15,5 +15,14 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    users = User.all(limit: 6)
+    50.times do
+      content = Faker::Lorem.sentence(5)
+      lat = 40.1
+      lng = 130.5
+      weather = "雨"
+      date = "7/1"
+      users.each { |user| user.records.create!(content: content, lat: lat, lng: lng, weather:weather, date: date) }
+    end
   end
 end
