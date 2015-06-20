@@ -6,7 +6,7 @@ describe User do
 
     subject { @user }
 
-    it { should respond_to(:name) }
+    it { should respond_to(:name) } 
     it { should respond_to(:email) }
     it { should respond_to(:password_digest) }
     it { should respond_to(:password) }
@@ -14,6 +14,7 @@ describe User do
     it { should respond_to(:remember_token) }
     it { should respond_to(:authenticate) }
     it { should respond_to(:admin) }
+    it { should respond_to(:records) }
     
     it { should be_valid }
     it { should_not be_admin }
@@ -102,6 +103,29 @@ describe User do
 
             it { should_not eq user_for_invalid_password }
             specify { expect(user_for_invalid_password).to be_false }
+        end
+    end
+    
+    describe "record associations" do
+        before { @user.save }
+        let!(:older_record) do
+            FactoryGirl.create(:record, user: @user, created_at: 1.day.ago)
+        end
+        let!(:newer_record) do
+            FactoryGirl.create(:record, user: @user, created_at: 1.hour.ago)
+        end
+        
+        it "should have the right record in the right order" do
+            expect(@user.records.to_a).to eq [newer_record, older_record]
+        end
+        
+        it "should destroy associated records" do
+            records = @user.records.to_a
+            @user.destroy
+            expect(records).not_to be_empty
+            records.each do |record|
+                expect(Record.where(id: record.id)).to be_empty
+            end
         end
     end
 end
