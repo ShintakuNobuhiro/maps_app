@@ -1,10 +1,23 @@
 <% provide(:title, 'HomePage') %>
-<div class="center hero-unit">
-  <h1>ようこそ！</h1>
-  <h2>
-    現在、作成中です。
-  </h2>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/record_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>ようこそ！</h1>
+    <h2>
+      現在、作成中です。
+    </h2>
 
-  <%= link_to "サインアップ", signup_path, class: "btn btn-large btn-primary" %>
+    <%= link_to "サインアップ", signup_path, class: "btn btn-large btn-primary" %>
 
 </div>
+<% end %>

@@ -12,6 +12,10 @@ FactoryGirl.define do
     
   factory :record do
     content "Lorem ipsum"
+    lat "40.1"
+    lng "45.2"
+    weather "雨"
+    date "7/1"
     user
   end
 end

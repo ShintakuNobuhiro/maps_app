@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Record do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @record = Record.new(content: "Lorem ipsum", user_id: user.id, lat:40.1, lng:120.5, weather:"雨", date: "7/1") }
+  before { @record = Record.new(content: "Lorem ipsum", user_id: user.id, lat:40.1, lng:120.5, weather:"雨", date: "2015-07-01 10:00") }
 
   subject { @record }
   it { should respond_to(:content) }

@@ -1,0 +1,11 @@
+<%= form_for(@record) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "内容" %>
+    <%= f.text_area :lat, placeholder: "lat" %>
+    <%= f.text_area :lng, placeholder: "lng" %>
+    <%= f.text_area :weather, placeholder: "天気" %>
+    <%= f.text_area :date, placeholder: "日付" %>
+  </div>
+  <%= f.submit "送信", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -70,7 +70,7 @@ describe "User pages" do
     describe "microposts" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
-      it { should have_content(user.record.count) }
+      it { should have_content(user.records.count) }
     end
   end
   
