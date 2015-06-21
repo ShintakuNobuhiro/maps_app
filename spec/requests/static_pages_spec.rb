@@ -8,7 +8,7 @@ describe "Static pages" do
     before { visit root_path }
   
     it { should have_content('ようこそ') }
-    it { should have_title('HomePage') }
+    it { should have_title('ホーム') }
     
   end
   
@@ -27,22 +27,22 @@ describe "Static pages" do
   describe "Contact page" do
     before { visit contact_path }
     it "should have the content 'Contact'" do
-      expect(page).to have_content('Contact')
+      expect(page).to have_content('コンタクト')
     end
 
     it "should have the title 'Contact'" do
-      expect(page).to have_title("Contact")
+      expect(page).to have_title("コンタクト")
     end
   end
   
   describe "Help page" do
     before { visit help_path }
     it "should have the content 'Help'" do
-      expect(page).to have_content('Help')
+      expect(page).to have_content('ヘルプ')
     end
 
     it "should have the title 'Help'" do
-      expect(page).to have_title("Help")
+      expect(page).to have_title("ヘルプ")
     end
   end
 end
