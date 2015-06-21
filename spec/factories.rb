@@ -11,11 +11,11 @@ FactoryGirl.define do
   end
     
   factory :record do
-    content "Lorem ipsum"
-    lat "40.1"
-    lng "45.2"
-    weather "雨"
-    date "7/1"
+    content { Faker::Lorem.sentence(5) }
+    lat { Faker::Address.latitude }
+    lng { Faker::Address.longitude }
+    weather { ['晴', '曇', '雨', '雪'].sample }
+    date 1.day.ago
     user
   end
 end
