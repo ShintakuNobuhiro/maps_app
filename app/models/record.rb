@@ -7,4 +7,6 @@ class Record < ActiveRecord::Base
     validates :weather, presence: true
     validates :date, presence: true
     validates :user_id, presence: true
+    
+
 end

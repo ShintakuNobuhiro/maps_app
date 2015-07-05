@@ -2,6 +2,10 @@ class RecordsController < ApplicationController
 before_action :signed_in_user, only: [:create, :destroy]
 
     def index
+        @records = Record.all
+        respond_to do |format|
+          format.json # app/views/records/index.json.jbuilder
+        end
     end
 
     def create
