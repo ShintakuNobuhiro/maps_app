@@ -1,3 +1,3 @@
 json.array!(@records) do |record|
-  json.(record, :id, :content, :lat, :lng, :weather, :date, :user_id)
+  json.(record, :content, :lat, :lng, :weather, :date)
 end

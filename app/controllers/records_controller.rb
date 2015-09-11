@@ -22,6 +22,6 @@ before_action :signed_in_user, only: [:create, :destroy]
     end
     
     def records_params
-        params.require(:record).permit(:content,:lat, :lng, :weather, :date)
+        params.require(:record).permit(:content,:lat, :lng, :weather, :date, :picture)
     end
 end

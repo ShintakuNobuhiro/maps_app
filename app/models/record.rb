@@ -8,5 +8,5 @@ class Record < ActiveRecord::Base
     validates :date, presence: true
     validates :user_id, presence: true
     
-
+    mount_uploader :picture, PictureUploader
 end

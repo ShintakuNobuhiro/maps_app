@@ -5,6 +5,7 @@
   <span class="weather"><%= record.weather %></span>
   <span class="date"><%= record.date %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(record.created_at) %> ago.
+  Posted <%= time_ago_in_words(record.created_at) %> ago.
   </span>
+  <%= image_tag record.picture.url if.record.picture? %>
 </li>
